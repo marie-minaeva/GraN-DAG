@@ -62,7 +62,7 @@ def compute_constraint(model, w_adj):
 def is_acyclic(adjacency):
     prod = np.eye(adjacency.shape[0])
     for _ in range(1, adjacency.shape[0] + 1):
-        prod = np.matmul(adjacency, prod)
+        prod = np.matmul(adjacency.cpu(), prod)
         if np.trace(prod) != 0: return False
     return True
 
